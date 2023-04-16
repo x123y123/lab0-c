@@ -155,17 +155,12 @@ bool q_delete_mid(struct list_head *head)
         return false;
     }
 
-    int cnt = 0;
-    int mid = cnt / 2 + 1;
+    int mid = q_size(head) / 2;
     struct list_head *node = head->next;
-    for (struct list_head *mid_node = head->next; node->next != head;
-         node = node->next) {
-        cnt++;
-    }
-    for (int i = 0; i < mid + 1; i++)
+    for (int i = 0; i < mid; i++)
         node = node->next;
 
-    list_del(node->next);
+    list_del(node);
 
     return true;
 }
